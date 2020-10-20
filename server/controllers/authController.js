@@ -5,7 +5,7 @@ module.exports = {
         const { email, password } = req.body,
             db = req.app.get('db');
         
-        const foundUser = await db.checkUser({ email });
+        const foundUser = await db.users.check_user({ email });
         if (foundUser[0]) {
             return res.status(400).send('Email already in use')
         }
@@ -13,7 +13,7 @@ module.exports = {
         let salt = bcrypt.genSaltSync(10),
             hash = bcrypt.hashSync(password, salt);
         
-        const newUser = await db.register_user({ email, hash });
+        const newUser = await db.users.register_user({ email, hash });
         req.session.user = newUser[0];
         res.status(201).send(req.session.user);
     },
@@ -21,7 +21,7 @@ module.exports = {
         const { email, password } = req.body,
             db = req.app.get('db');
         
-        const foundUser = await db.check_user({ email });
+        const foundUser = await db.users.check_user({ email });
         if (!foundUser[0]) {
             return res.status(404).send('Email not found')
         }

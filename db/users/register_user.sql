@@ -1,14 +1,8 @@
 insert into exercise_tracker_use (
     email,
-    password,
-    age,
-    city,
-    state
+    password
 ) values (
     ${email},
-    ${hash},
-    ${age},
-    ${city},
-    ${state}
+    ${hash}
 )
 returning user_id, email;

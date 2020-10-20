@@ -15,7 +15,7 @@ export default class Dashboard extends Component{
         return (
           <section>
             <div>
-                    <h1>Hello!  Welcome to your exercise tracking dashboard.</h1>
+                    <h1>Hello!  Welcome to your dashboard.</h1>
                     
             </div>
           </section>

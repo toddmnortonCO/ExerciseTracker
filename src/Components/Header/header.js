@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
-import session from "express-session";
+// import session from "express-session";
 
 class Header extends Component {
 
@@ -13,9 +13,9 @@ class Header extends Component {
   render() {
     return (
       <section>
-        <h1>The Get Swoll - Exercise Tracker</h1>
+        <h1>Get Swoll Exercise Tracker</h1>
         <li>
-          <Link to='/dashboard'>User Dashboard</Link>
+          <Link to='/dashboard'>Dashboard</Link>
         </li>
         <li>
           <Link to='/about'>About</Link>
