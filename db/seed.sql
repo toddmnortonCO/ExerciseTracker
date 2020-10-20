@@ -1,8 +1,10 @@
 create table if not exists exercise_tracker_users (
     user_id serial primary key,
     email varchar(100) NOT NULL,
+    password varchar(50) NOT NULL,
     age integer NOT NULL,
-    location varchar(100)
+    city varchar(100),
+    state varchar(2)
 );
 
 create table if not exists exercises (
