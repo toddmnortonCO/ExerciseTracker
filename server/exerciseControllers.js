@@ -2,6 +2,7 @@ const exercises = []
 let id = 1;
 
 function getExercises(req, res) {
+    
     res.status(200).send(exercises)
 }
 
