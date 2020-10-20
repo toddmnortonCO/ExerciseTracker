@@ -1,15 +1,14 @@
-import React, { Component }from 'react';
-import Header from './Components/header';
+import React from 'react';
+import Header from './Components/Header/header'; 
 import './App.css';
-import Dashboard from './Components/dashboard';
-import About from './Components/about';
+import routes from './routes';
+
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <Dashboard />
-      <About />
+      {routes}
     </div>
   );
 }

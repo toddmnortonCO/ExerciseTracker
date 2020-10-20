@@ -13,11 +13,12 @@ export default class Dashboard extends Component{
 
     render(){
         return (
-            <section>
-                <div>hello
-                    {this.state}
-                </div>
-            </section>
-        )
+          <section>
+            <div>
+                    <h1>Hello!  Welcome to your exercise tracking dashboard.</h1>
+                    
+            </div>
+          </section>
+        );
     }
 }

@@ -2,12 +2,11 @@ require('dotenv').config();
 const express = require('express'),
     massive = require('massive'),
     session = require('express-session'),
-    authController = require('../server/authController'),
+    authController = require('./authController'),
+    exerciseController = require('./exerciseControllers'),
+    commentController = require('./commentController'),
     { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env,
     app = express();
-      
-const exerciseController = require('./exerciseControllers');
-const commentController = require('./commentController');
 
 app.use(express.json());
 app.use(session({

@@ -3,10 +3,10 @@ import React, { Component } from 'react'
 class About extends Component {
     render() {
         return (
-            <div>
-                Test Test Test
-            </div>
-        )
+          <div>
+            <h1>This is one great about me page!</h1>
+          </div>
+        );
     }
 }
 
