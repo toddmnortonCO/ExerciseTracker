@@ -3,27 +3,39 @@ import axios from "axios";
 import { connect } from "react-redux";
 
 class Dashboard extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.setState = {
-      
+      exercise: []
     };
   }
 
+  handleInput = (val) => {
+    this.setState({exercise: val})
+  }
+
   addExercise = () => {
-    axios.post('/api/post', {id: this.props.exercise_tracker_user.user_id})
+    axios.post('/api/post', { id : this.props.exercise_tracker_user.user_id })
+      .then(res => this.setState({ posts: res.data }))
+      .catch(err => console.log(err))
   }
 
   getExercises = () => {
-    axios.get()
+    axios.get(`/api/posts/${this.props.exercise_tracker_user.user_id}`)
+      .then(res => this.setState({ posts: res.data }))
+    .catch(err => console.log(err))
   }
 
   editExercise = () => {
-    axios.put
+    axios.put()
   }
 
   deleteExercise = () => {
-    axios.delete()
+    axios.delete(`/api/post/${id}`)
+      .then(() => {
+        this.getExercises();
+      })
+    .catch(err => console.log(err))
   }
 
   render() {

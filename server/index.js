@@ -2,9 +2,9 @@ require('dotenv').config();
 const express = require('express'),
     massive = require('massive'),
     session = require('express-session'),
-    authController = require('./authController'),
-    exerciseController = require('./exerciseControllers'),
-    commentController = require('./commentController'),
+    authController = require('./controllers/authController'),
+    exerciseController = require('./controllers/exerciseControllers'),
+    commentController = require('./controllers/commentController'),
     { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env,
     app = express();
 
@@ -32,13 +32,13 @@ app.get('/api/logout', authController.logout);
 // exercise endpoints
 app.get("/api/exercises", exerciseController.getExercises);
 app.post("api/exercises", exerciseController.addExercise); 
-app.put("api/exercises", exerciseController.editExercise); 
-app.delete("api/exercises", exerciseController.deleteExercise);
+app.put("api/exercises/:exercise_id", exerciseController.editExercise); 
+app.delete("api/exercises/:exercise_id", exerciseController.deleteExercise);
 
 // comment endpoints
 app.get("/api/comments", commentController.getComments);
 app.post("api/comments", commentController.addComment);
-app.put("api/comments", commentController.editComment);
-app.delete("api/comments", commentController.deleteComment);
+app.put("api/comments/:exercise_comment_id", commentController.editComment);
+app.delete("api/comments/:exercise_comment_id",commentController.deleteComment);
 
 app.listen(SERVER_PORT, () => console.log(`server chillin on ${SERVER_PORT}`));

@@ -27,7 +27,7 @@ class Landing extends Component {
         })
         .catch(err => console.log(err));
     } else {
-      alert("Passwords don't match")
+      alert("Uh oh, something went wrong");
     }
   }
 
@@ -47,8 +47,16 @@ class Landing extends Component {
       <div>
         <h1>Get Swoll Exercise Tracker</h1>
         <h2>Please Login or Register</h2>
-        <input value="email" onEvent={this.handleInput}></input>
-        <input value="password" onEvent={this.handleInput}></input>
+        <input
+          value={this.state.email}
+          placeholder="Email"
+          onChange={(e) => this.handleInput(e)}
+        />
+        <input
+          value={this.state.password}
+          placeholder='Password'
+          onChange={(e) => this.handleInput(e)}
+        />
         <button onClick={this.handleRegister}>Register</button>
         <button onClick={this.handleLogin}>Login</button>
       </div>
