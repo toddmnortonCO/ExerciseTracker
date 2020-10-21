@@ -23,7 +23,10 @@ class Header extends Component {
         <li>
           <Link to='/donate'>Donate</Link>
         </li>
-        <button onClick={this.logout}>Logout</button>
+        <li>
+          <Link to='/contact'>Contact Me</Link>
+        </li>
+        {/* <button onClick={this.logout}>Logout</button> */}
       </section>
     );
   }

@@ -5,10 +5,13 @@ const express = require('express'),
     authController = require('./controllers/authController'),
     exerciseController = require('./controllers/exerciseControllers'),
     commentController = require('./controllers/commentController'),
+    const nodemailerController = require('./controllers/nodemailerController');
+    const bodyParser = require('body-parser'),
     { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env,
-    app = express();
+  app = express();
 
 app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({
     resave: false,
     saveUninitialized: true,
@@ -39,6 +42,9 @@ app.delete("api/exercises/:exercise_id", exerciseController.deleteExercise);
 app.get("/api/comments", commentController.getComments);
 app.post("api/comments", commentController.addComment);
 app.put("api/comments/:exercise_comment_id", commentController.editComment);
-app.delete("api/comments/:exercise_comment_id",commentController.deleteComment);
+app.delete("api/comments/:exercise_comment_id", commentController.deleteComment);
+
+// nodemailer endpoint
+app.post('api/contact', nodemailerController.emailPost);
 
 app.listen(SERVER_PORT, () => console.log(`server chillin on ${SERVER_PORT}`));
