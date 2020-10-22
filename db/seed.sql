@@ -1,7 +1,7 @@
 create table if not exists exercise_tracker_users (
     user_id serial primary key,
     email varchar(100) NOT NULL,
-    password varchar(50) NOT NULL,
+    password varchar(500) NOT NULL
 );
 
 create table if not exists exercises (

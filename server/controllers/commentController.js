@@ -13,6 +13,7 @@ module.exports = {
       exercise_id: req.body.exercise_id,
       comments: req.body.comment,
     };
+    exercise.id = id;
     exercise_comments.push(newComment);
     comment_id++;
     res.status(200).send("Comment Added, Way to go!", exercise_comments.limit(10));

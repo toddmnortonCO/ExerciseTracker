@@ -1,4 +1,4 @@
-insert into exercise_tracker_use (
+insert into exercise_tracker_users (
     email,
     password
 ) values (

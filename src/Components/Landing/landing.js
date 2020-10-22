@@ -7,54 +7,57 @@ class Landing extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
-      password: '',
-      verPassword: ''
-    }
+      email: "",
+      password: "",
+    };
   }
 
-  handleInput = (event) => {
-    this.setState({[event.target.name] : event.target.value})
-  }
+  handleInput = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
 
-  handleRegister = () => {
-    const { email, password, verPassword } = this.state;
-    if (password && password === verPassword) {
-      axios.post('/api/register', { email, password })
-        .then(res => {
+  handleRegister = (e) => {
+    e.preventDefault();
+    const { email, password } = this.state
+      axios
+        .post("/api/register", { email, password })
+        .then((res) => {
           this.props.getUser(res.data);
-          this.props.history.push('/dashboard');
+          this.props.history.push("/dashboard");
         })
-        .catch(err => console.log(err));
-    } else {
-      alert("Uh oh, something went wrong");
-    }
-  }
+        .catch((err) => console.log(err));
+    } 
+  
 
-  handleLogin = () => {
+  handleLogin = (e) => {
+    e.preventDefault();
     const { email, password } = this.state;
-    axios.post('/api/login', { email, password })
-      .then(res => {
+    axios
+      .post("/api/login", { email, password })
+      .then((res) => {
         this.props.getUser(res.data);
-        this.props.history.push('/dashboard');
+        this.props.history.push("/dashboard");
       })
-      .catch(err => console.log(err))
-  }
+      .catch((err) => console.log(err));
+  };
 
-
-  render() {
+  render(){
     return (
       <div>
         <h1>Get Swoll Exercise Tracker</h1>
         <h2>Please Login or Register</h2>
         <input
           value={this.state.email}
+          name='email'
           placeholder="Email"
           onChange={(e) => this.handleInput(e)}
         />
         <input
           value={this.state.password}
-          placeholder='Password'
+          name="password"
+          placeholder="Password"
           onChange={(e) => this.handleInput(e)}
         />
         <button onClick={this.handleRegister}>Register</button>
@@ -64,4 +67,6 @@ class Landing extends Component {
   }
 }
 
-export default connect(null, {getUser})(Landing);
+const mapStateToProps = (reduxState) => reduxState;
+
+export default connect(mapStateToProps, { getUser })(Landing);

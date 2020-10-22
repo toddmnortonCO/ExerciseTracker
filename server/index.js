@@ -47,4 +47,4 @@ app.delete("api/comments/:exercise_comment_id", commentController.deleteComment)
 // nodemailer endpoint
 app.post('api/contact', nodemailerController.emailPost);
 
-app.listen(SERVER_PORT, () => console.log(`server chillin on ${SERVER_PORT}`));
+app.listen(SERVER_PORT, () => console.log(`server lifting on ${SERVER_PORT}`));
