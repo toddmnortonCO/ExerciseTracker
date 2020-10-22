@@ -20,9 +20,9 @@ class Header extends Component {
         <li>
           <Link to='/about'>About</Link>
         </li>
-        <li>
+        {/* <li>
           <Link to='/donate'>Donate</Link>
-        </li>
+        </li> */}
         <li>
           <Link to='/contact'>Contact Me</Link>
         </li>

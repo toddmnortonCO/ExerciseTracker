@@ -10,7 +10,7 @@ create table if not exists exercises (
     activity varchar(100),
     duration INTEGER,
     distance INTEGER,
-    summary VARCHAR(255)
+    summary TEXT
 );
 
 create table if not exists exercise_comments (

@@ -34,7 +34,7 @@ class Landing extends Component {
   handleLogin = (e) => {
     e.preventDefault();
     const { email, password } = this.state;
-    axios
+      axios
       .post("/api/login", { email, password })
       .then((res) => {
         this.props.getUser(res.data);

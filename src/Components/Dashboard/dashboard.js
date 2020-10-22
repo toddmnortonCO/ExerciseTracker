@@ -74,7 +74,6 @@ class Dashboard extends Component {
   }
 
   render() {
-
     console.log(this.props)
     const mappedExercises = this.state.exercises.map((exercise, i) => (
       <div>
@@ -83,22 +82,23 @@ class Dashboard extends Component {
       </div>
     ))
     return (
-      <section>
-        <div>
-          <input/>
-          <h1>Hello! Welcome to your dashboard.</h1>
-          <button onClick={this.createExercise}>Add Exercise</button>
-          <h2>Your Recent Workouts</h2>
-          {mappedExercises}
-          <button>Edit Exercise</button>
-        </div>
-      </section>
-    )
+      <div className="dashboard">
+        <input
+          value={this.state.exercises}
+          placeholder="Add Exercise"
+          onChange={(e) => this.handleInput(e.target.value)}
+        />
+        <h1>Hello! Welcome to your dashboard.</h1>
+        <button onClick={this.createExercise}>Add Exercise</button>
+        <h2>Your Recent Workouts</h2>
+        <div>{mappedExercises}</div>
+        <button>Edit Exercise</button>
+        {/* <button onClick=>Log Out</button> */}
+      </div>
+    );
   }
 }
 
 const mapStateToProps = (reduxState) => reduxState;
-
-// export default Dashboard;
 
 export default connect(mapStateToProps)(Dashboard);
