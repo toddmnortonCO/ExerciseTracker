@@ -15,6 +15,6 @@ export default (
     <Route path="/dashboard" component={Dashboard} />
     <Route path="/about" component={About} />
     <Route path="/donate" component={Donate} />
-    <Route path='/contactme' component={Contact} />
+    <Route path='/contact' component={Contact} />
   </Switch>
 );
