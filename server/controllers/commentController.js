@@ -2,9 +2,8 @@ let exercise_comments = [];
 let comment_id = 1;
 
 module.exports = {
-
   getComments: (req, res) => {
-    res.status(200).send(comments);
+    res.status(200).send(exercise_comments)
   },
 
   addComment: (req, res) => {

@@ -5,8 +5,8 @@ const express = require('express'),
     authController = require('./controllers/authController'),
     exerciseController = require('./controllers/exerciseControllers'),
     commentController = require('./controllers/commentController'),
-    const nodemailerController = require('./controllers/nodemailerController');
-    const bodyParser = require('body-parser'),
+    nodemailerController = require('./controllers/nodemailerController'),
+    bodyParser = require('body-parser'),
     { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env,
   app = express();
 
