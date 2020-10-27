@@ -12,9 +12,9 @@ export default (
   <Switch>
     <Route exact path="/" component={Landing} />
     <Header />
-    <Route path="/dashboard" component={Dashboard} />
-    <Route path="/about" component={About} />
-    <Route path="/donate" component={Donate} />
+    <Route path="/Dashboard" component={Dashboard} />
+    <Route path="/About" component={About} />
+    <Route path="/Donate" component={Donate} />
     {/* <Route path='/contact' component={Contact} /> */}
   </Switch>
 );
