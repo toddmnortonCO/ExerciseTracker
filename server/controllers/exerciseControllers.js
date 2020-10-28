@@ -1,50 +1,54 @@
-let exercises = [];
-let exercise_id = 1;
+/* eslint-disable no-unused-vars */
 
 module.exports = {
-  getExercises: (req, res) => {
-    res.status(200).send(exercises); //need to update exercises to attach to DB
+  getExercises: async (req, res) => {
+    const {user_id } = req.params,
+        db = req.app.get('db');
+
+      await db.exercises.get_exercises({ user_id })
+      .then((exercises) => res.status(200).send(exercises))
+      .catch(err => {console.log(err);
+      res.status(500).send(err)})
   },
 
   addExercise: (req, res) => {
-    const { user_id, activity, duration, distance, summary } = req.body,
+    const { exercises } = req.body,
       db = req.app.get("db");
 
-    db.post
-      .add_exercise(user_id, activity, duration, distance, summary)
-      .then(() => res.sendStatus(200))
-      .catch((err) => console.log(err));
-    exercise_id++;
+      db.exercises
+      .add_exercise({user_id: this.state.user_id, 
+        activity: this.props.activity,
+        duration: this.props.duration, 
+        distance: this.props.distance,
+        summary: this.props.summary})
+      .then(exercises => res.sendStatus(200).send(exercises))
+      .catch(err => res.status(500).send(err));
 
-    // exercise_id++;
-    // let newExercise = {
-    //     exercise_id,
-    //     user_id: req.body.user_id,
-    //     activity: req.body.activity,
-    //     duration: req.body.duration,
-    //     distance: req.body.distance,
-    //     summary: req.body.summary
-    // }
-    // exercises.push(newExercise);
-    // res.status(200).send('Exercise Added, Way to go!', exercises)
+    res.status(200).send('Exercise Added, Way to go!')
   },
 
-  editExercise: (req, res) => {
-    let exercise = exercises.find((element) => element.id === +req.params.id);
-    exercise.activity = req.body.activity;
-    exercise.duration = req.body.duration;
-    exercise.distance = req.body.distance;
-    exercise.summary = req.body.summary;
+  editSummary: (req, res) => {
+    const {exercise_id, activity, duration, distance} = req.params;
+    const {summary} = req.body;
+    const db = req.app.get('db');
 
-    res.status(200).send(exercises.limit(10));
+          db.exercises.edit_summary({exercise_id, activity, distance, duration, summary})
+          .then(exercises => res.status(200).send(exercises.limit(10)))
+          .catch( err=> console.log(err))
   },
 
   deleteExercise: (req, res) => {
-    let exercise = exercises.findIndex(
+    const id = req.body,
+          db = req.app.get('db'),
+
+      targetExercise = db.exercises.findIndex(
       (element) => element.id === +req.params.id
     );
-    exercises.splice(index, 1);
 
-    res.status(200).send(exercises.limit(10));
+    db.exercises.delete_exercise(targetExercise)
+    .then(() => db.exercises.splice(targetExercise, 1))
+    .catch(err => res.status(500).send(err));
+
+    res.status(200).send(db.exercises.limit(10));
   },
 };

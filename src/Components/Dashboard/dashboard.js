@@ -79,7 +79,7 @@ class Dashboard extends Component {
   }
 
   render() {
-    console.log(this.props)
+    // console.log(this.props)
     let exercises = [];
     const mappedExercises = exercises.map((exercise, i) => (
       <div>

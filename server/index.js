@@ -25,6 +25,7 @@ massive({
 }).then((db) => {
   app.set("db", db);
   console.log("db connected");
+  app.listen(SERVER_PORT, () => console.log(`server lifting on ${SERVER_PORT}`));
 });
 
 // auth endpoints
@@ -35,7 +36,7 @@ app.get('/api/logout', authController.logout);
 // exercise endpoints
 app.get("/api/exercises", exerciseController.getExercises);
 app.post("api/exercises", exerciseController.addExercise); 
-app.put("api/exercises/:exercise_id", exerciseController.editExercise); 
+app.put("api/exercises/:exercise_id", exerciseController.editSummary); 
 app.delete("api/exercises/:exercise_id", exerciseController.deleteExercise);
 
 // comment endpoints
@@ -46,5 +47,3 @@ app.delete("api/comments/:exercise_comment_id", commentController.deleteComment)
 
 // nodemailer endpoint
 app.post('api/contact', nodemailerController.emailPost);
-
-app.listen(SERVER_PORT, () => console.log(`server lifting on ${SERVER_PORT}`));
