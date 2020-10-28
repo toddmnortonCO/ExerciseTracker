@@ -5,12 +5,10 @@ import { connect } from "react-redux";
 class Dashboard extends Component {
   constructor(props) {
     super(props);
-    this.setState = {
+    this.state = {
       exercises: []
     };
   }
-
-  let exercises = [];
 
   componentDidMount() {
     if (!this.props.user.email) {
@@ -18,9 +16,14 @@ class Dashboard extends Component {
     }
   }
 
-  handleInput = (val) => {
-    this.setState({exercises: val})
+  handleInput = (e, val) => {
+    console.log(e.target)
+    this.setState({[e.target.name]: val})
   }
+
+  // handleInput(val) {
+  //   this.setState({exercises: val})
+  // }
 
   getExercises = () => {
     axios.get(`/api/exercises/${this.props.exercise_tracker_user.user_id}`)
@@ -30,8 +33,8 @@ class Dashboard extends Component {
 
   addExercise = () => {
     axios.post(`/api/exercises/`, {
-      user_id: this.props.exercise_tracker_user.user_id,
-      activity: this.state.activity,
+      // user_id: this.props.exercise_tracker_user.user_id,
+      activity: this.props.activity,
       duration: this.props.duration,
       distance: this.props.distance,
       summary: this.props.summary
@@ -77,6 +80,7 @@ class Dashboard extends Component {
 
   render() {
     console.log(this.props)
+    let exercises = [];
     const mappedExercises = exercises.map((exercise, i) => (
       <div>
         <button onClick={() => this.deleteExercise(exercise.exercise_id)}>Delete</button>
@@ -85,17 +89,37 @@ class Dashboard extends Component {
   ))
     return (
       <div className="dashboard">
+        <h1>Hello! Welcome to Your Dashboard.</h1>
+        <h2>Add Your Exercise Here</h2>
         <input
-          value={this.state.exercises}
           placeholder="Add Exercise"
-          onChange={(e) => this.handleInput(e.target.value)}
+          onChange={(e) => this.handleInput(e, e.target.value)}
+          value={this.props.exercise}
+          name="exercises"
         />
-        <h1>Hello! Welcome to your dashboard.</h1>
-        <button onClick={this.createExercise}>Add Exercise</button>
+        <input
+          placeholder="Add Duration"
+          onChange={(e) => this.handleInput(e, e.target.value)}
+          value={this.props.duration}
+          name="duration"
+        />
+        <input
+          placeholder="Add Distance"
+          onChange={(e) => this.handleInput(e, e.target.value)}
+          value={this.props.distance}
+          name="distance"
+        />
+        <input
+          placeholder="Add Summary"
+          onChange={(e) => this.handleInput(e, e.target.value)}
+          value={this.props.summary}
+          name="summary"
+        />
+        <button onClick={this.addExercise}>Add Workout</button>
         <h2>Your Recent Workouts</h2>
         <div>{mappedExercises}</div>
         <button>Edit Exercise</button>
-        {/* <button onClick=>Log Out</button> */}
+        <button>Delete Exercise</button>
       </div>
     );
   }
