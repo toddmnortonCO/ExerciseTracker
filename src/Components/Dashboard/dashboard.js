@@ -10,6 +10,8 @@ class Dashboard extends Component {
     };
   }
 
+  let exercises = [];
+
   componentDidMount() {
     if (!this.props.user.email) {
       this.props.history.push('/')
@@ -75,12 +77,12 @@ class Dashboard extends Component {
 
   render() {
     console.log(this.props)
-    const mappedExercises = this.state.exercises.map((exercise, i) => (
+    const mappedExercises = exercises.map((exercise, i) => (
       <div>
         <button onClick={() => this.deleteExercise(exercise.exercise_id)}>Delete</button>
         <button onClick={() => this.editExercise(exercise.exercise_id)}>Edit</button>
       </div>
-    ))
+  ))
     return (
       <div className="dashboard">
         <input

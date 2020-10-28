@@ -11,7 +11,7 @@ import Header from "./Components/Header/Header";
 export default (    
   <Switch>
     <Route exact path="/" component={Landing} />
-    <Header />
+    {/* <Header /> */}
     <Route path="/Dashboard" component={Dashboard} />
     <Route path="/About" component={About} />
     <Route path="/Donate" component={Donate} />

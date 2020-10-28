@@ -21,4 +21,4 @@ create table if not exists exercise_comments (
 
 select user_id, activity, comment_id
 from exercises ex
-inner join exercise_comments ec on ex.exercise_id = ec.exercise_id;
+inner join exercise_comments ec on ex.exercise_id = ec.exercise_id;     
