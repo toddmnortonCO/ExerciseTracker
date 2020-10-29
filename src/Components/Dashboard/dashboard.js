@@ -12,8 +12,9 @@ class Dashboard extends Component {
 
   componentDidMount() {
     if (!this.props.user.email) {
-      this.props.history.push('/')
+      this.props.history.push('/');
     }
+    this.getExercises();
   }
 
   handleInput = (e, val) => {
@@ -21,13 +22,9 @@ class Dashboard extends Component {
     this.setState({[e.target.name]: val})
   }
 
-  // handleInput(val) {
-  //   this.setState({exercises: val})
-  // }
-
   getExercises = () => {
-    axios.get(`/api/exercises/${this.props.exercise_tracker_users.user_id}`)
-      .then(res => this.setState({ posts: res.data }))
+    axios.get(`/api/exercises/${this.props.user.user_id}`)
+      .then(res => this.setState({ exercises: res.data }))
       .catch(err => console.log(err))
   }
 
@@ -58,12 +55,11 @@ class Dashboard extends Component {
 
   getComments = () => {
       axios.get(`/api/comments/${this.props.exercise_tracker_user.user_id}`)
-
   }
 
   addComment = () => {
     axios.post(`api/comments/`, {
-      exercise_id: this.props.exercise_id,
+      // exercise_id: this.props.exercise_id,
       comments: this.props.comments
     })
   }
@@ -71,14 +67,18 @@ class Dashboard extends Component {
   deleteComment = (comment_id) => {
     axios.delete(`/api/comments/${comment_id}`)
       .then(() => { this.getComments() })
-    .catch(err => console.log(err))
+      .catch(err => console.log(err))
   }
 
   render() {
     // console.log(this.props)
-    let exercises = [];
-    const mappedExercises = exercises.map((exercise, i) => (
+    const mappedExercises = this.state.exercises.map((exercise, i) => (
       <div>
+        <p>{exercise.activity}</p>
+        <p>{exercise.distance}</p>
+        <p>{exercise.summary}</p>
+        <p>{exercise.duration}</p>
+        <p></p>
         <button onClick={() => this.deleteExercise(exercise.exercise_id)}>Delete</button>
         <button onClick={() => this.editExercise(exercise.exercise_id)}>Edit</button>
       </div>

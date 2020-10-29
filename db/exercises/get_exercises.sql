@@ -1,3 +1,2 @@
-select * from exercises e
--- join exercise_tracker_users etu on e.user_id = etu.user_id
+select activity, distance, duration, summary from exercises e
 where user_id = $1;
