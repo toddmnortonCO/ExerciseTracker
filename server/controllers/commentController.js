@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 let exercise_comments = [];
 let comment_id = 1;
 
@@ -14,8 +15,7 @@ module.exports = {
   ,
 
   addComment: (req, res) => {
-      console.log(req.body);
-      const { comment_id, exercise_id, comments } = req.body,
+      const { comment_id, comments_user_id, exercise_id, comments } = req.body,
         db = req.app.get("db");
   
         db.exercise_comments
@@ -45,9 +45,15 @@ module.exports = {
   },
 
   deleteComment: (req, res) => {
-    let targetComment = exercise_comments.findIndex(element => element.id === +req.params.id);
-    exercise_comments.splice(targetComment, 1);
+    const comment_id = req.params,
+    db = req.app.get('db'),
 
-    res.status(200).send(exercise_comments.limit(10))
+    targetComment = db.exercise_comments.comment_id.findIndex(element => element.id === +req.params.id);
+
+    db.exercise_comments.delete_comment(targetComment)
+    .then(() => db.exercise_comments.comment_id.splice(targetComment, 1))
+    .catch(err => res.status(500).send(err));
+
+    res.status(200).send(exercise_comments.limit(10));
   },
 }

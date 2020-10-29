@@ -52,10 +52,8 @@ class Dashboard extends Component {
 
   deleteExercise = (exercise_id) => {
     axios.delete(`/api/exercises/${exercise_id}`)
-      .then(() => {
-        this.getExercises();
-      })
-    .catch(err => console.log(err))
+      .then(() => {this.getExercises() })
+      .catch(err => console.log(err))
   }
 
   getComments = () => {

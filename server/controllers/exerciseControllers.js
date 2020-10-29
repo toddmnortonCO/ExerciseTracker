@@ -2,7 +2,7 @@
 
 module.exports = {
   getExercises: async (req, res) => {
-    const {user_id } = req.params,
+    const { user_id } = req.params,
         db = req.app.get('db');
 
       await db.exercises.get_exercises([user_id])
@@ -12,7 +12,7 @@ module.exports = {
   },
 
   addExercise: (req, res) => {
-    const { exercises } = req.body,
+    const { activity, duration, distance, summary } = req.body,
       db = req.app.get("db");
 
       db.exercises
@@ -38,17 +38,15 @@ module.exports = {
   },
 
   deleteExercise: (req, res) => {
-    const id = req.body,
-          db = req.app.get('db'),
+    const {exercise_id} = req.params,
+      db = req.app.get('db');
 
-      targetExercise = db.exercises.findIndex(
-      (element) => element.id === +req.params.id
-    );
+    //   targetExercise = db.exercises.exercise_id.findIndex(
+    //   (element) => element.id === +req.params.exercise_id
+    // );
 
-    db.exercises.delete_exercise(targetExercise)
-    .then(() => db.exercises.splice(targetExercise, 1))
+    db.exercises.delete_exercise([exercise_id])
+    .then(exercises => res.status(200).send(exercises))
     .catch(err => res.status(500).send(err));
-
-    res.status(200).send(db.exercises.limit(10));
-  },
+  }
 };
