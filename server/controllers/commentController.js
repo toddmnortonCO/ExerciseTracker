@@ -1,6 +1,4 @@
 /* eslint-disable no-unused-vars */
-let exercise_comments = [];
-let comment_id = 1;
 
 module.exports = {
     getComments: async (req, res) => {
@@ -26,7 +24,7 @@ module.exports = {
         .then(exercise_comments => res.sendStatus(200).send(exercise_comments))
         .catch(err => res.status(500).send(err));
   
-      res.status(200).send('Comment Added!', exercise_comments)
+      res.status(200).send('Comment Added!')
     },
 
   editComment: (req, res) => {
@@ -37,23 +35,14 @@ module.exports = {
     db.exercise_comments.edit_comment({comment_id, exercise_id, comments})
     .then(exercise_comments => res.status(200).send('Comment updated', exercise_comments.limit(10)))
     .catch(err => console.log(err))
-
-    let exercise_comment = exercise_comments.find((element) => element.id === +req.params.id);
-    exercise_comment.comments = req.body.comments;
-  
-    res.status(200).send(exercise_comments.limit(10));
   },
 
   deleteComment: (req, res) => {
-    const comment_id = req.params,
-    db = req.app.get('db'),
+    const {comment_id} = req.params,
+    db = req.app.get('db');
 
-    targetComment = db.exercise_comments.comment_id.findIndex(element => element.id === +req.params.id);
-
-    db.exercise_comments.delete_comment(targetComment)
-    .then(() => db.exercise_comments.comment_id.splice(targetComment, 1))
+    db.comments.delete_comment([comment_id])
+    .then(exercise_comments => res.status(200).send(exercise_comments))
     .catch(err => res.status(500).send(err));
-
-    res.status(200).send(exercise_comments.limit(10));
   },
 }

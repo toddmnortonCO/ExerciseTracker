@@ -70,9 +70,7 @@ class Dashboard extends Component {
 
   deleteComment = (comment_id) => {
     axios.delete(`/api/comments/${comment_id}`)
-      .then(() => {
-        this.getComments();
-      })
+      .then(() => { this.getComments() })
     .catch(err => console.log(err))
   }
 

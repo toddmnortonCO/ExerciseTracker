@@ -41,10 +41,6 @@ module.exports = {
     const {exercise_id} = req.params,
       db = req.app.get('db');
 
-    //   targetExercise = db.exercises.exercise_id.findIndex(
-    //   (element) => element.id === +req.params.exercise_id
-    // );
-
     db.exercises.delete_exercise([exercise_id])
     .then(exercises => res.status(200).send(exercises))
     .catch(err => res.status(500).send(err));
