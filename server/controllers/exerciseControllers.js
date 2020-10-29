@@ -16,11 +16,11 @@ module.exports = {
       db = req.app.get("db");
 
       db.exercises
-      .add_exercise({user_id: this.state.user_id, 
-        activity: this.props.activity,
-        duration: this.props.duration, 
-        distance: this.props.distance,
-        summary: this.props.summary})
+      .add_exercise([ 
+        activity,
+        duration, 
+        distance,
+        summary])
       .then(exercises => res.sendStatus(200).send(exercises))
       .catch(err => res.status(500).send(err));
 

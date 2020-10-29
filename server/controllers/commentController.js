@@ -13,15 +13,15 @@ module.exports = {
   ,
 
   addComment: (req, res) => {
-      const { comment_id, comments_user_id, exercise_id, comments } = req.body,
+      const { comment_id, comments_user_id, comments } = req.body,
         db = req.app.get("db");
   
-        db.exercise_comments
-        .add_comment({
-          comment_id: this.props.comment_id,
-          exercise_id: this.state.exercise_id, 
-          comments: this.props.comments})
-        .then(exercise_comments => res.sendStatus(200).send(exercise_comments))
+        db.comments
+        .add_comment([
+          comment_id,
+          comments_user_id, 
+          comments])
+        .then(comments => res.sendStatus(200).send(comments))
         .catch(err => res.status(500).send(err));
   
       res.status(200).send('Comment Added!')
@@ -32,7 +32,7 @@ module.exports = {
     const {comment_id, exercise_id } = req.params,
           {comments} = req.body;
 
-    db.exercise_comments.edit_comment({comment_id, exercise_id, comments})
+    db.comments.edit_comment({comment_id, exercise_id, comments})
     .then(exercise_comments => res.status(200).send('Comment updated', exercise_comments.limit(10)))
     .catch(err => console.log(err))
   },
