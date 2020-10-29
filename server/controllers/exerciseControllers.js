@@ -15,8 +15,7 @@ module.exports = {
     const { activity, duration, distance, summary } = req.body,
       db = req.app.get("db");
 
-      db.exercises
-      .add_exercise([ 
+      db.exercises.add_exercise([ 
         activity,
         duration, 
         distance,
@@ -32,9 +31,11 @@ module.exports = {
     const {summary} = req.body;
     const db = req.app.get('db');
 
-          db.exercises.edit_summary({exercise_id, activity, distance, duration, summary})
-          .then(exercises => res.status(200).send(exercises.limit(10)))
+          db.exercises.update_summary([exercise_id, activity, distance, duration, summary])
+          .then(exercises => res.status(200).send(exercises))
           .catch( err=> console.log(err))
+
+          res.status(200).send('Summary Updated!')
   },
 
   deleteExercise: (req, res) => {

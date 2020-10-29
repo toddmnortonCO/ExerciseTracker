@@ -16,8 +16,7 @@ module.exports = {
       const { comment_id, comments_user_id, comments } = req.body,
         db = req.app.get("db");
   
-        db.comments
-        .add_comment([
+        db.comments.add_comment([
           comment_id,
           comments_user_id, 
           comments])
@@ -32,7 +31,7 @@ module.exports = {
     const {comment_id, exercise_id } = req.params,
           {comments} = req.body;
 
-    db.comments.edit_comment({comment_id, exercise_id, comments})
+    db.comments.edit_comment([comment_id, exercise_id, comments])
     .then(exercise_comments => res.status(200).send('Comment updated', exercise_comments.limit(10)))
     .catch(err => console.log(err))
   },
