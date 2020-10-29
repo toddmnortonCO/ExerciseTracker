@@ -15,6 +15,7 @@ create table if not exists exercises (
 
 create table if not exists exercise_comments (
     comment_id serial primary key,
+    comments_user_id int references exercise_tracker_users(user_id),
     exercise_id int references exercises(exercise_id),
     comments varchar(500) 
 );

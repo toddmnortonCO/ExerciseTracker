@@ -26,14 +26,14 @@ class Dashboard extends Component {
   // }
 
   getExercises = () => {
-    axios.get(`/api/exercises/${this.props.exercise_tracker_user.user_id}`)
+    axios.get(`/api/exercises/${this.props.exercise_tracker_users.user_id}`)
       .then(res => this.setState({ posts: res.data }))
       .catch(err => console.log(err))
   }
 
   addExercise = () => {
     axios.post(`/api/exercises/`, {
-      // user_id: this.props.exercise_tracker_user.user_id,
+      // user_id: this.props.exercise_tracker_users.user_id,
       activity: this.props.activity,
       duration: this.props.duration,
       distance: this.props.distance,

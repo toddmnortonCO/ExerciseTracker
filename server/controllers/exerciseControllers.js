@@ -5,7 +5,7 @@ module.exports = {
     const {user_id } = req.params,
         db = req.app.get('db');
 
-      await db.exercises.get_exercises({ user_id })
+      await db.exercises.get_exercises([user_id])
       .then((exercises) => res.status(200).send(exercises))
       .catch(err => {console.log(err);
       res.status(500).send(err)})

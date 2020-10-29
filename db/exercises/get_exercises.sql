@@ -1,3 +1,3 @@
-select e.exercise_id from exercises e
-join exercise_tracker_user etu on e.user_id = etu.user_id
-where etu.user_id = $1;
+select * from exercises e
+-- join exercise_tracker_users etu on e.user_id = etu.user_id
+where user_id = $1;

@@ -34,13 +34,13 @@ app.post('/api/login', authController.login);
 app.get('/api/logout', authController.logout);
 
 // exercise endpoints
-app.get("/api/exercises", exerciseController.getExercises);
+app.get("/api/exercises/:user_id", exerciseController.getExercises);
 app.post("api/exercises", exerciseController.addExercise); 
 app.put("api/exercises/:exercise_id", exerciseController.editSummary); 
 app.delete("api/exercises/:exercise_id", exerciseController.deleteExercise);
 
 // comment endpoints
-app.get("/api/comments", commentController.getComments);
+app.get("/api/comments/:user_id", commentController.getComments);
 app.post("api/comments", commentController.addComment);
 app.put("api/comments/:exercise_comment_id", commentController.editComment);
 app.delete("api/comments/:exercise_comment_id", commentController.deleteComment);
