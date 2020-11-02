@@ -5,8 +5,12 @@ import { connect } from "react-redux";
 class Dashboard extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      exercises: []
+    this.state = { 
+      exercises: [],
+      exerciseName: "",
+      duration: "",
+      distance: "",
+      summary: ""
     };
   }
 
@@ -91,7 +95,7 @@ class Dashboard extends Component {
           placeholder="Add Exercise"
           onChange={(e) => this.handleInput(e, e.target.value)}
           value={this.props.exercise}
-          name="exercises"
+          name="exerciseName"
         />
         <input
           placeholder="Add Duration"
