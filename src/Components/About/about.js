@@ -6,7 +6,9 @@ class About extends Component {
         return (
           <div>
             <Header />
-            <h1>This is one great 'About Me' page!</h1>
+            <h1>About the App Creator</h1>
+            <h2>Todd Norton</h2>
+            <p></p>
           </div>
         );
     }

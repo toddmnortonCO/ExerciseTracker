@@ -14,7 +14,7 @@ module.exports = {
   addExercise: (req, res) => {
     const { activity, duration, distance, summary } = req.body,
       db = req.app.get("db");
-    console.log(req.session)
+    console.log(req.session)  
     console.log(req.body)
       db.exercises.add_exercise([ 
         req.session.user.user_id,
@@ -22,10 +22,10 @@ module.exports = {
         duration, 
         distance,
         summary])
-      .then(exercises => res.status(200).send(exercises));
+      .then(exercises => res.status(200).send(exercises))
       // .catch(err => res.status(500).send(err));
 
-    res.status(200).send('Exercise Added, Way to go!')
+    // res.status(200).send('Exercise Added, Way to go!')
   },
 
   editSummary: (req, res) => {
