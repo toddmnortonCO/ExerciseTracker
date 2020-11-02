@@ -1,5 +1,5 @@
 insert into exercises (
-    user_id,
+    -- user_id,
     activity,
     duration,
     distance,
@@ -9,5 +9,5 @@ insert into exercises (
     $2,
     $3,
     $4,
-    $5
+    -- $5
 )

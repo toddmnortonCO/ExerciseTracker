@@ -1,14 +1,17 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
-import session from "express-session";
+import axios from 'axios';
 
 class Header extends Component {
 
-  logout = () => {
-    localStorage.clear('token');
-    session.destroy();
-    this.history.push('/');
-  }
+  handleLogout = (e) => {
+    axios
+    .get('/api/logout', (req, res) => {
+      req.session.destroy();
+      res.status(200).send(console.log('user has been logged out'))
+  });
+  // this.props.history.push("/");
+}
 
   render() {
     return (
@@ -25,7 +28,7 @@ class Header extends Component {
         <p>
           <Link to='/contact'>Contact Me</Link>
         </p> */}
-        <button onClick={this.logout}>Logout</button>
+        <button onClick={this.handleLogout}>Logout</button>
       </section>
     );
   }

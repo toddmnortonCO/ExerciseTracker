@@ -35,7 +35,6 @@ class Dashboard extends Component {
 
   addExercise = () => {
     axios.post(`/api/exercises/`, {
-      // user_id: this.props.exercise_tracker_users.user_id,
       activity: this.props.activity,
       duration: this.props.duration,
       distance: this.props.distance,
