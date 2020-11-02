@@ -45,7 +45,6 @@ class Dashboard extends Component {
   }
 
   editExercise = (exercise_id) => {
-    console.log(exercise_id)
     axios.put(`/api/exercises/${exercise_id}`)
       .then(() => { this.getExercises() })
       .catch(err => console.log(err))
@@ -53,7 +52,7 @@ class Dashboard extends Component {
 
   deleteExercise = (exercise_id) => {
     axios.delete(`/api/exercises/${exercise_id}`)
-      .then(() => {this.getExercises() })
+      .then(() => { this.getExercises() })
       .catch(err => console.log(err))
   }
 
@@ -75,7 +74,6 @@ class Dashboard extends Component {
   }
 
   render() {
-    // console.log(this.props)
     const mappedExercises = this.state.exercises.map((exercise, i) => (
       <div>
         <p>{exercise.activity}</p>
@@ -84,7 +82,7 @@ class Dashboard extends Component {
         <p>{exercise.duration}</p>
         <p></p>
         <button onClick={() => this.deleteExercise(exercise.exercise_id)}>Delete</button>
-        <button onClick={() => this.editExercise(exercise.exercise_id)}>Edit</button>
+        {/* <button onClick={() => this.editExercise(exercise.exercise_id)}>Edit</button> */}
       </div>
   ))
     return (
@@ -119,8 +117,6 @@ class Dashboard extends Component {
         <button onClick={this.addExercise}>Add Workout</button>
         <h2>Your Recent Workouts</h2>
         <div>{mappedExercises}</div>
-        <button>Edit Exercise</button>
-        <button>Delete Exercise</button>
       </div>
     );
   }
