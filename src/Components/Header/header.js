@@ -22,10 +22,10 @@ class Header extends Component {
         <p>
           <Link to='/about'>About</Link>
         </p>
-        {/* <p>
+        <p>
           <Link to='/donate'>Donate</Link>
         </p>
-        <p>
+        {/* <p>
           <Link to='/contact'>Contact Me</Link>
         </p> */}
         <button onClick={this.handleLogout}>Logout</button>
