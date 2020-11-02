@@ -4,7 +4,6 @@ import Landing from './Components/Landing/Landing';
 import Dashboard from './Components/Dashboard/Dashboard';
 import About from "./Components/About/About";
 import Donate from './Components/Donate/Donate';
-import Header from "./Components/Header/Header";
 // import Contact from "./Components/Contact/contact";
 
 

@@ -2,7 +2,7 @@ const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 const express = require('express');
 const app = express();
 app.use(express.static('.'));
-const YOUR_DOMAIN = 'http://localhost:4040/Dashboard';
+const YOUR_DOMAIN = 'http://localhost:4040/';
 app.post('/create-session', async (req, res) => {
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ['card'],
@@ -14,7 +14,7 @@ app.post('/create-session', async (req, res) => {
             name: 'Donation',
             images: ['https://i.imgur.com/EHyR2nP.png'],
           },
-          unit_amount: 100,
+          unit_amount: 200,
         },
         quantity: 1,
       },
