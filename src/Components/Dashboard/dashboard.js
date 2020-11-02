@@ -8,7 +8,7 @@ class Dashboard extends Component {
     super(props);
     this.state = { 
       exercises: [],
-      exerciseName: "",
+      activity: "",
       duration: "",
       distance: "",
       summary: ""
@@ -34,11 +34,12 @@ class Dashboard extends Component {
   }
 
   addExercise = () => {
-    axios.post(`/api/exercises/`, {
-      activity: this.props.activity,
-      duration: this.props.duration,
-      distance: this.props.distance,
-      summary: this.props.summary
+    console.log(this.props);
+    axios.post(`/api/exercises`, {
+      activity: this.state.activity,
+      duration: this.state.duration,
+      distance: this.state.distance,
+      summary: this.state.summary
     })
       .then(() => {this.getExercises()})
       .catch(err => console.log(err))
@@ -76,11 +77,10 @@ class Dashboard extends Component {
   render() {
     const mappedExercises = this.state.exercises.map((exercise, i) => (
       <div>
-        <p>{exercise.activity}</p>
-        <p>{exercise.distance}</p>
-        <p>{exercise.summary}</p>
-        <p>{exercise.duration}</p>
-        <p></p>
+        <p>Exercise: {exercise.activity}</p>
+        <p>Distance: {exercise.distance}mi</p>
+        <p>Exercise Duration: {exercise.duration}</p>
+        <p>Summary: {exercise.summary}</p>
         <button onClick={() => this.deleteExercise(exercise.exercise_id)}>Delete</button>
         {/* <button onClick={() => this.editExercise(exercise.exercise_id)}>Edit</button> */}
       </div>
@@ -93,8 +93,8 @@ class Dashboard extends Component {
         <input
           placeholder="Add Exercise"
           onChange={(e) => this.handleInput(e, e.target.value)}
-          value={this.props.exercise}
-          name="exerciseName"
+          value={this.props.activity}
+          name="activity"
         />
         <input
           placeholder="Add Duration"
