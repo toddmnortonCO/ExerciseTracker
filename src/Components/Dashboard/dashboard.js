@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
+import Header from '../Header/Header';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -89,6 +90,7 @@ class Dashboard extends Component {
   ))
     return (
       <div className="dashboard">
+        <Header />
         <h1>Hello! Welcome to Your Dashboard.</h1>
         <h2>Add Your Exercise Here</h2>
         <input

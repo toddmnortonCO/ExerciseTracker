@@ -1,32 +1,31 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
-// import session from "express-session";
+import session from "express-session";
 
 class Header extends Component {
 
-  // logout = () => {
-  //   localStorage.clear('token');
-  //   session.destroy();
-  //   this.history.push('/');
-  // }
+  logout = () => {
+    localStorage.clear('token');
+    session.destroy();
+    this.history.push('/');
+  }
 
   render() {
     return (
       <section>
-        <h1>Get Swoll Exercise Tracker</h1>
-        <li>
+        <p>
           <Link to='/dashboard'>Dashboard</Link>
-        </li>
-        <li>
+        </p>
+        <p>
           <Link to='/about'>About</Link>
-        </li>
-        {/* <li>
+        </p>
+        {/* <p>
           <Link to='/donate'>Donate</Link>
-        </li> */}
-        <li>
+        </p>
+        <p>
           <Link to='/contact'>Contact Me</Link>
-        </li>
-        {/* <button onClick={this.logout}>Logout</button> */}
+        </p> */}
+        <button onClick={this.logout}>Logout</button>
       </section>
     );
   }
