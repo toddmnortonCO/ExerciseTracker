@@ -2,6 +2,10 @@
     background-color: aliceblue;
 }
 
-.ExerciseDisplay {
+.HeaderOne {
+    font-weight: bolder;
+}
+
+.HeaderTwo {
     font-weight: bold;
 }

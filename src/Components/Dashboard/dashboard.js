@@ -93,8 +93,8 @@ class Dashboard extends Component {
     return (
       <div className="Dashboard">
         <Header />
-        <h1>Hello! Welcome to Your Dashboard.</h1>
-        <h2>Add Your Exercise Here</h2>
+        <h1 className="HeaderOne">Hello! Welcome to Your Dashboard.</h1>
+        <h2 className="HeaderTwo">Add Your Exercise Here</h2>
         <input
           placeholder="Add Exercise"
           onChange={(e) => this.handleInput(e, e.target.value)}
