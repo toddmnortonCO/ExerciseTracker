@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { loadStripe } from "@stripe/stripe-js";
+import Header from '../Header/Header';
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
 const stripePromise = loadStripe("pk_test_51Hj6yjGJg6htRBctXyv7dHO8CAEBNpXZU9jsINlCXVXiChCABOAClWvlT3uqEdOTIRm5x9UAX5nIqCxSCWzStOtJ00D1aPqOrk");
 const ProductDisplay = ({ handleClick }) => (
   <section>
+    <Header />
     <div className="product">
       <img
         src="https://i.imgur.com/EHyR2nP.png"
