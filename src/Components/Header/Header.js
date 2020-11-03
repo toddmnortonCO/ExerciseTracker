@@ -29,7 +29,7 @@ class Header extends Component {
         {/* <p>
           <Link to='/contact'>Contact Me</Link>
         </p> */}
-        <button onClick={this.handleLogout}>Logout</button>
+        {/* <button onClick={this.handleLogout}>Logout</button> */}
       </section>
     );
   }
