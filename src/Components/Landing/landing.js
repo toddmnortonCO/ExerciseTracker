@@ -46,7 +46,7 @@ class Landing extends Component {
 
   render(){
     return (
-      <div class='Landing' >
+      <div className='Landing' >
         <h1 name='App Title'>Get Swoll Exercise Tracker</h1>
         <h2>Please Login or Register</h2>
         <input
