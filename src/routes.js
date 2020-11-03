@@ -1,9 +1,9 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import Landing from './Components/Landing/Landing';
-import Dashboard from './Components/Dashboard/Dashboard';
+import Dashboard from './Components/Dashboard/Dashboard.js';
 import About from "./Components/About/About";
 import Donate from './Components/Donate/Donate';
+import Landing from './Components/Landing/Landing';
 
 
 export default (    
