@@ -8,7 +8,7 @@ import Landing from './Components/Landing/Landing';
 
 export default (    
   <Switch>
-    <Route path="/" component={Landing} />
+    <Route exact path="/" component={Landing} />
     <Route path="/Dashboard" component={Dashboard} />
     <Route path="/About" component={About} />
     <Route path="/Donate" component={Donate} />
