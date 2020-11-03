@@ -31,9 +31,6 @@ massive({
 
 // hosting 
 app.use(express.static(__dirname + '/../build')) 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../build/index.html'))
-})
 
 // auth endpoints
 app.post('/api/register', authController.register);
@@ -54,3 +51,7 @@ app.delete("/api/comments/:exercise_comment_id", commentController.deleteComment
 
 // nodemailer endpoint
 app.post('api/contact', nodemailerController.emailPost);
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../build/index.html'))
+})
