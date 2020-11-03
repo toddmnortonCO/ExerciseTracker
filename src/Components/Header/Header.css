@@ -1,5 +1,5 @@
 .Header {
-    background-color: $primary-color;
+    background-color: black;
     display: flex;
     flex-direction: center;
     padding-left: 20px;
