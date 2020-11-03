@@ -7,6 +7,7 @@ const express = require('express'),
     commentController = require('./controllers/commentController'),
     nodemailerController = require('./controllers/nodemailerController'),
     bodyParser = require('body-parser'),
+    path = require('path'),
     { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env,
   app = express();
 
@@ -27,6 +28,12 @@ massive({
   console.log("db connected");
   app.listen(SERVER_PORT, () => console.log(`server lifting on ${SERVER_PORT}`));
 });
+
+// hosting 
+app.use(express.static(__dirname + '/../build')) 
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../build/index.html'))
+})
 
 // auth endpoints
 app.post('/api/register', authController.register);
