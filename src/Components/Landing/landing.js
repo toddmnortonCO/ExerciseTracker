@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { getUser } from '../../redux/reducer';
+import './Landing.css';
 
 class Landing extends Component {
   constructor(props) {
@@ -45,7 +46,7 @@ class Landing extends Component {
 
   render(){
     return (
-      <div>
+      <div class='Landing' >
         <h1 name='App Title'>Get Swoll Exercise Tracker</h1>
         <h2>Please Login or Register</h2>
         <input

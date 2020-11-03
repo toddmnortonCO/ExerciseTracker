@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import Header from '../Header/Header';
+import './Dashboard.css'
 
 class Dashboard extends Component {
   constructor(props) {
@@ -18,10 +19,10 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
+    this.getExercises();
     if (!this.props.user.email) {
       this.props.history.push('/');
     }
-    this.getExercises();
   }
 
   handleInput = (e, val) => {
@@ -80,8 +81,7 @@ class Dashboard extends Component {
 
   render() {
     const mappedExercises = this.state.exercises.map((exercise, i) => (
-      <div class="outerDiv" key={exercise.exercise_id}>
-        <p>{exercise.exercise_id}</p>
+      <div class="outerDiv" key={exercise.exercise_id} >
         <p>Exercise: {exercise.activity}</p>
         <p>Distance: {exercise.distance}mi</p>
         <p>Duration: {exercise.duration}</p>
@@ -91,7 +91,7 @@ class Dashboard extends Component {
       </div>
   ))
     return (
-      <div className="dashboard">
+      <div className="Dashboard">
         <Header />
         <h1>Hello! Welcome to Your Dashboard.</h1>
         <h2>Add Your Exercise Here</h2>
