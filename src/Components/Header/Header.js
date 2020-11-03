@@ -18,13 +18,13 @@ class Header extends Component {
     return (
       <section class="Header" >
         <p>
-          <Link to='/dashboard'>Dashboard</Link>
+          <Link to='/dashboard'> Dashboard </Link>
         </p>
         <p>
-          <Link to='/about'>About</Link>
+          <Link to='/about'> About Me </Link>
         </p>
         <p>
-          <Link to='/donate'>Donate</Link>
+          <Link to='/donate'> Donate </Link>
         </p>
         {/* <p>
           <Link to='/contact'>Contact Me</Link>

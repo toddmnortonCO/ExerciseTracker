@@ -48,7 +48,7 @@ class Dashboard extends Component {
       .catch(err => console.log(err))
   }
 
-  editExercise = (exercise_id) => {
+  editExerciseSummary = (exercise_id) => {
     axios.put(`/api/exercises/${exercise_id}`)
       .then(() => { this.getExercises() })
       .catch(err => console.log(err))
@@ -86,8 +86,8 @@ class Dashboard extends Component {
         <p>Distance: {exercise.distance}mi</p>
         <p>Duration: {exercise.duration}</p>
         <p>Summary: {exercise.summary}</p>
+        <button onClick={() => this.editExerciseSummary(exercise.exercise_id)}>Edit Summary</button>
         <button onClick={() => this.deleteExercise(exercise.exercise_id)}>Delete</button>
-        {/* <button onClick={() => this.editExercise(exercise.exercise_id)}>Edit</button> */}
       </div>
   ))
     return (
