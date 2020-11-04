@@ -2,5 +2,6 @@
     background-color: grey;
     display: flex;
     flex-direction: center;
-    padding-left: 20px;
+    justify-content: space-around;
+    font-weight: bold;
 }
