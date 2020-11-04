@@ -5,7 +5,7 @@ const express = require('express'),
     authController = require('./controllers/authController'),
     exerciseController = require('./controllers/exerciseControllers'),
     commentController = require('./controllers/commentController'),
-    nodemailerController = require('./controllers/nodemailerController'),
+    // nodemailerController = require('./controllers/nodemailerController'),
     bodyParser = require('body-parser'),
     path = require('path'),
     { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env,
@@ -50,7 +50,7 @@ app.put("/api/comments/:exercise_comment_id", commentController.editComment);
 app.delete("/api/comments/:exercise_comment_id", commentController.deleteComment);
 
 // nodemailer endpoint
-app.post('api/contact', nodemailerController.emailPost);
+// app.post('api/contact', nodemailerController.emailPost);
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../build/index.html'))

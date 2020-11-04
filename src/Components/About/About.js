@@ -8,7 +8,12 @@ class About extends Component {
             <Header />
             <h1>About the App Creator</h1>
             <h2>Todd Norton</h2>
-            <text>All of W5 is welcome this app is such a train wreck.  Yours can only look better than this!</text>
+            <text>This is just a little about me.<br></br>Not filled in yet.</text>
+            <br></br>
+            <a href="https://www.linkedin.com/toddmnorton">My LinkedIn Profile</a>
+            <br></br>
+            <text>Future portfolio link goes here.</text>
+            <div id="todd"></div>
             <p></p>
           </div>
         );
