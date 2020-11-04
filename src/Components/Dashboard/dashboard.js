@@ -51,8 +51,7 @@ class Dashboard extends Component {
   clearExerciseSummary = () => {
     axios.put(`/api/exercises/`, {
       summary: this.state.summary
-    }
-    )
+    })
       .then(() => { this.getExercises() })
       .catch(err => console.log(err))
   }
