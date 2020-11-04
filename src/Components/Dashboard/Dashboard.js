@@ -84,12 +84,12 @@ class Dashboard extends Component {
   render() {
     const mappedExercises = this.state.exercises.map((exercise, i) => (
       <div class="outerDiv" key={exercise.exercise_id} >
-        <p>Exercise: {exercise.activity}</p>
+        <p className='p'>Exercise: {exercise.activity}</p>
         <p>Distance: {exercise.distance}mi</p>
         <p>Duration: {exercise.duration}min</p>
         <p>Summary: {exercise.summary}</p>
-        <button onClick={() => this.clearExerciseSummary(exercise.exercise_id)}>Clear Summary</button>
-        <button onClick={() => this.deleteExercise(exercise.exercise_id)}>Delete</button>
+        {/* <button onClick={() => this.clearExerciseSummary(exercise.exercise_id)}>Clear Summary</button> */}
+        <button onClick={() => this.deleteExercise(exercise.exercise_id)}>Delete Workout</button>
       </div>
   ))
     return (
