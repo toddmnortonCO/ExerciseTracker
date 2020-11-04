@@ -98,25 +98,25 @@ class Dashboard extends Component {
         <h1 className="HeaderOne">Hello! Welcome to Your Dashboard.</h1>
         <h2 className="HeaderTwo">Add Your Exercise Here</h2>
         <input
-          placeholder="Add Exercise"
+          placeholder="Workout"
           onChange={(e) => this.handleInput(e, e.target.value)}
           value={this.props.activity}
           name="activity"
         />
         <input
-          placeholder="Add Duration"
+          placeholder="Exercise Duration"
           onChange={(e) => this.handleInput(e, e.target.value)}
           value={this.props.duration}
           name="duration"
         />
         <input
-          placeholder="Add Distance"
+          placeholder="Miles (if applicable)"
           onChange={(e) => this.handleInput(e, e.target.value)}
           value={this.props.distance}
           name="distance"
         />
         <input
-          placeholder="Add Summary"
+          placeholder="Workout Summary"
           onChange={(e) => this.handleInput(e, e.target.value)}
           value={this.props.summary}
           name="summary"
