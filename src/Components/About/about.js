@@ -10,7 +10,7 @@ class About extends Component {
             <h2>Todd Norton</h2>
             <text>This is just a little about me.<br></br>Not filled in yet.</text>
             <br></br>
-            <a href="https://www.linkedin.com/toddmnorton">My LinkedIn Profile</a>
+            <a href="https://www.linkedin.com/in/toddmnorton/">My LinkedIn Profile</a>
             <br></br>
             <text>Future portfolio link goes here.</text>
             <div id="todd"></div>
