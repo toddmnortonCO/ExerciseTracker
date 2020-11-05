@@ -47,7 +47,7 @@ class Landing extends Component {
   render(){
     return (
       <div className='Landing' >
-        <h1 name='App Title'>Get Swoll Exercise Tracker</h1>
+        <h1 name='App Title'>Get Swoll Fitness Tracker</h1>
         <h2>Please Login or Register</h2>
         <input
           value={this.state.email}

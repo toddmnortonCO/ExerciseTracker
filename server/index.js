@@ -5,7 +5,7 @@ const express = require('express'),
     authController = require('./controllers/authController'),
     exerciseController = require('./controllers/exerciseControllers'),
     commentController = require('./controllers/commentController'),
-    // nodemailerController = require('./controllers/nodemailerController'),
+    stripeController = require('./controllers/stripeController'),
     bodyParser = require('body-parser'),
     path = require('path'),
     { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env,
@@ -49,8 +49,9 @@ app.post("/api/comments", commentController.addComment);
 app.put("/api/comments/:exercise_comment_id", commentController.editComment);
 app.delete("/api/comments/:exercise_comment_id", commentController.deleteComment);
 
-// nodemailer endpoint
-// app.post('api/contact', nodemailerController.emailPost);
+// stripe endpoint
+app.post('/api/payment', stripeController.completePayment);
+
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../build/index.html'))
