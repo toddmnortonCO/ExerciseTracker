@@ -26,6 +26,9 @@ class Header extends Component {
         <p>
           <Link to='/donate'> Donate </Link>
         </p>
+        <p>
+          <Link to='/contact'>Contact</Link>
+        </p>
         {/* <button onClick={this.handleLogout}>Logout</button> */}
       </section>
     );

@@ -37,6 +37,8 @@ app.use(express.static(__dirname + '/../build'))
 app.post('/api/register', authController.register);
 app.post('/api/login', authController.login);
 app.get('/api/logout', authController.logout);
+app.post('/api/email', authController.email);
+
 
 // exercise endpoints
 app.get("/api/exercises/:user_id", exerciseController.getExercises);
