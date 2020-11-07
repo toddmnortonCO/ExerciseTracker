@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { getUser } from '../../redux/reducer';
-import './Landing.css';
+import './Landing.scss';
 
 class Landing extends Component {
   constructor(props) {

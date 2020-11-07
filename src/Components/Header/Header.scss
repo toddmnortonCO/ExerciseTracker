@@ -1,0 +1,11 @@
+@import '../../_variables';
+
+.Header {
+    height: 100px;
+    background-color: $primary-header-color;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}

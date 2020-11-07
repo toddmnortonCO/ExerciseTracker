@@ -7,14 +7,14 @@ module.exports = {
     email:  (req, res) => {
         const { userEmail} = req.body;
         // const db = req.app.get('db');
-        console.log(req.body)
+        console.log(req.params)
         // try/catch is used to handle errors without the use of .then and .catch
         try {
             let transporter = nodemailer.createTransport({
                 service: 'Gmail',
                 auth: {
-                    user: {GMAIL_USER},
-                    pass: {GMAIL_PASS}
+                    user: "getswollexercisetracker@gmail.com",
+                    pass: "BlckFX40!"
                 },
             });
 

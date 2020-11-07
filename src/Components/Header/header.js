@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import './Header.css';
+import './Header.scss';
 
 class Header extends Component {
 
@@ -18,7 +18,7 @@ class Header extends Component {
     return (
       <section class="Header" >
         <p>
-          <Link to='/dashboard'> Dashboard </Link>
+          <Link className="Link" to='/dashboard'> Dashboard </Link>
         </p>
         <p>
           <Link to='/about'> About Me </Link>
