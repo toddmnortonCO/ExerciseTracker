@@ -14,6 +14,8 @@ module.exports = {
             hash = bcrypt.hashSync(password, salt);
         
         const newUser = await db.users.register_user({ email, hash });
+                // SECOND AWAIT TO INITIALIZE NEW REGISTERED USER EMAIL
+                        await email(newUser.email);
         req.session.user = newUser[0];
         res.status(201).send(req.session.user);
     },
