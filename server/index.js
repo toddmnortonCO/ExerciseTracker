@@ -10,7 +10,7 @@ const express = require('express'),
     bodyParser = require('body-parser'),
     path = require('path'),
     { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env,
-  app = express();
+    app = express();
 
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));

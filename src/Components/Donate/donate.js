@@ -1,27 +1,34 @@
-import React from 'react'
+import React, {Component} from 'react';
 import StripeCheckout from 'react-stripe-checkout';
- 
-export default class TakeMoney extends React.Component {
-  onToken = (token) => {
-    fetch('/save-stripe-token', {
-      method: 'POST',
-      body: JSON.stringify(token),
-    }).then(response => {
-      response.json().then(data => {
-        alert(`We are in business, ${data.email}`);
-      });
-    });
+import stripe from '../../config';
+import axios from 'axios';
+
+class Donate extends Component {
+
+  onToken = async(token) => {
+    token.card = void 0;
+
+    await axios.post('/api/payment', {token, amount: 100})
+          .then(() => {
+            alert('Payment Submitted')
+          })
+          .catch(err => console.log(err))
   }
- 
-  // ...
- 
-  render() {
+
+  render(){
     return (
-      // ...
-      <StripeCheckout
-        token={this.onToken}
-        stripeKey="pk_live_51Hj6yjGJg6htRBctjGwiOgeKwWAery2mvqdLKdV4U2daP1DpiHrRsuCCyjJpvDyhhCqoZ9WzgIBkSpUv6UWVtfA800G7dgqp4b"
-      />
-    )
+      <div className="App">
+        <StripeCheckout 
+          label='Proceed to Checkout'
+          token={this.onToken}
+          stripeKey={stripe.public_key}
+          amount={100}
+          // shippingAddress={true}
+          // billingAddress={true}
+          />
+      </div>
+    );
   }
 }
+
+export default Donate;
