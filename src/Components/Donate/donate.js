@@ -19,7 +19,7 @@ class Donate extends Component {
     return (
       <div className="App">
         <StripeCheckout 
-          label='Proceed to Checkout'
+          label='Donate $1'
           token={this.onToken}
           stripeKey={stripe.public_key}
           amount={100}
