@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import Header from '../Header/Header';
-import './Dashboard.scss'
+// import './Dashboard.scss'
 
 class Dashboard extends Component {
   constructor(props) {
